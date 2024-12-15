@@ -10824,3 +10824,7 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+
+.form-authentication .ant-form-item{
+  margin-bottom: 12px;
+}

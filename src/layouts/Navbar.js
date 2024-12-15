@@ -1,6 +1,19 @@
-import { Avatar } from "antd";
+import { useState } from 'react';
+import ModalAuthentication from '../components/ModalAuthentication';
 
 const Navbar = () => {
+	const [isOpenModal, setIsOpenModal] = useState(false);
+	const [status, setStatus] = useState('register');
+
+	const handleOpenModal = (stt) => {
+		setIsOpenModal(true);
+		setStatus(stt);
+	};
+
+	const handleCloseModal = () => {
+		setIsOpenModal(false);
+	};
+
 	return (
 		<nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
 			<div className='container'>
@@ -22,17 +35,30 @@ const Navbar = () => {
 					<ul className='navbar-nav ms-auto mb-2 mb-lg-0'>
 						{/* Chưa đăng nhập */}
 						<li className='nav-item'>
-							<span className='nav-link' style={{ cursor: 'pointer' }}>
+							<span
+								className='nav-link'
+								style={{ cursor: 'pointer' }}
+								onClick={() => handleOpenModal('register')}
+							>
 								Đăng ký
 							</span>
 						</li>
 						<li className='nav-item'>
-							<span className='nav-link' style={{ cursor: 'pointer' }}>
+							<span
+								className='nav-link'
+								style={{ cursor: 'pointer' }}
+								onClick={() => handleOpenModal('login')}
+							>
 								Đăng nhập
 							</span>
 						</li>
+						<ModalAuthentication
+							open={isOpenModal}
+							status={status}
+							handleCloseModal={handleCloseModal}
+						/>
 						{/* Đã đăng nhập */}
-						<li className='nav-item'>
+						{/* <li className='nav-item'>
 							<span className='nav-link' style={{ cursor: 'pointer' }}>
 								Tạo bài viết
 							</span>
@@ -45,7 +71,7 @@ const Navbar = () => {
 							size='large'
 						>
 							D
-						</Avatar>
+						</Avatar> */}
 					</ul>
 				</div>
 			</div>
