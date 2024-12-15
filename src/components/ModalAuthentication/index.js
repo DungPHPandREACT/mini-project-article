@@ -1,8 +1,9 @@
 import { Form, Input, Modal, notification } from 'antd';
 import { useFormik } from 'formik';
-import React from 'react';
+import React, { useContext } from 'react';
 import * as yup from 'yup';
 import { useAddUser, useGetUsers } from '../../apis/users.api';
+import AuthContext from '../../contexts/AuthContext';
 
 const FormRegister = ({ form }) => {
 	return (
@@ -61,6 +62,8 @@ const FormLogin = ({ form }) => {
 const ModalAuthentication = ({ status, open, handleCloseModal }) => {
 	const [api, contextHolder] = notification.useNotification();
 
+	const { onChangeUserCurrent } = useContext(AuthContext);
+
 	const title =
 		status === 'register' ? 'Đăng ký tài khoản' : 'Đăng nhập tài khoản';
 	const okText = status === 'register' ? 'Đăng ký' : 'Đăng nhập';
@@ -83,8 +86,6 @@ const ModalAuthentication = ({ status, open, handleCloseModal }) => {
 	});
 
 	const { data: users } = useGetUsers();
-
-	console.log('users: ', users);
 
 	const formRegister = useFormik({
 		initialValues: {
@@ -131,7 +132,12 @@ const ModalAuthentication = ({ status, open, handleCloseModal }) => {
 						placement: 'topRight',
 					});
 
-					isLoginSuccess = true;
+					onChangeUserCurrent(user);
+					handleCloseModal();
+
+					localStorage.setItem('user', JSON.stringify(user));
+
+					return;
 				}
 			}
 
