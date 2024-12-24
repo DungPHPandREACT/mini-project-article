@@ -1,17 +1,34 @@
 {
-  "users": [
-    {
-      "id": "e2bc",
-      "email": "tiendung@gmail.com",
-      "username": "user1",
-      "password": "123456"
-    },
-    {
-      "id": "a28b",
-      "email": "user2@gmail.com",
-      "username": "user2",
-      "password": "123456"
-    }
-  ],
-  "posts": []
+	"users": [
+		{
+			"id": "e2bc",
+			"email": "tiendung@gmail.com",
+			"username": "user1",
+			"password": "123456"
+		},
+		{
+			"id": "a28b",
+			"email": "user2@gmail.com",
+			"username": "user2",
+			"password": "123456"
+		}
+	],
+	"posts": [
+		{
+			"id": "5016",
+			"title": "Bài viết đầu tiên",
+			"image": "https://theecommmanager.com/wp-content/uploads/sites/6/2020/07/17-Product-Attribute-Examples-Types-for-Ecommerce-01.png",
+			"category": "css",
+			"content": "Đây là nội dung bài viết rất rất hay",
+			"createdAt": "12-24-2024"
+		},
+		{
+			"id": "347e",
+			"title": "Đây là bài viết thứ 2",
+			"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7o5WXUPcIQhTdmixyaEZuGEwT2MjI-PG3pA&s",
+			"category": "nodejs",
+			"content": "Đây là bài viết thứ 2 và có nội dung rất nà hay",
+			"createdAt": "12-24-2024"
+		}
+	]
 }

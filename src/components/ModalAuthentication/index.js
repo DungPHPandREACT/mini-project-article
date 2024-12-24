@@ -30,6 +30,7 @@ const FormRegister = ({ form }) => {
 					name='password'
 					value={form.values.password}
 					onChange={form.handleChange}
+					type='password'
 				/>
 			</Form.Item>
 		</Form>
@@ -53,6 +54,7 @@ const FormLogin = ({ form }) => {
 					name='password'
 					value={form.values.password}
 					onChange={form.handleChange}
+					type='password'
 				/>
 			</Form.Item>
 		</Form>

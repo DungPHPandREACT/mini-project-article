@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import ModalAuthentication from '../components/ModalAuthentication';
 import AuthContext from '../contexts/AuthContext';
 import { Avatar, notification } from 'antd';
+import DrawerAddNewPost from '../components/DrawerAddNewPost'
 
 const Navbar = () => {
 	const [api, contextHolder] = notification.useNotification();
@@ -10,6 +11,7 @@ const Navbar = () => {
 
 	const [isOpenModal, setIsOpenModal] = useState(false);
 	const [status, setStatus] = useState('register');
+	const [isOpenDrawer, setIsOpenDrawer] = useState(false);
 
 	const handleOpenModal = (stt) => {
 		setIsOpenModal(true);
@@ -18,6 +20,14 @@ const Navbar = () => {
 
 	const handleCloseModal = () => {
 		setIsOpenModal(false);
+	};
+
+	const handleOpenDrawer = () => {
+		setIsOpenDrawer(true);
+	};
+
+	const handleCloseDrawer = () => {
+		setIsOpenDrawer(false);
 	};
 
 	const handleLogout = () => {
@@ -76,7 +86,11 @@ const Navbar = () => {
 							<>
 								{/* Đã đăng nhập */}
 								<li className='nav-item'>
-									<span className='nav-link' style={{ cursor: 'pointer' }}>
+									<span
+										className='nav-link'
+										style={{ cursor: 'pointer' }}
+										onClick={handleOpenDrawer}
+									>
 										Tạo bài viết
 									</span>
 								</li>
@@ -106,6 +120,8 @@ const Navbar = () => {
 							status={status}
 							handleCloseModal={handleCloseModal}
 						/>
+
+						<DrawerAddNewPost open={isOpenDrawer} onClose={handleCloseDrawer} />
 					</ul>
 				</div>
 			</div>
